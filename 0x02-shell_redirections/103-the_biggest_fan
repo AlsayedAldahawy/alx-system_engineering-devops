@@ -1,2 +1,2 @@
 #!/bin/bash
-tail -n +2 nasa.data | cut -f 1 | uniq -c | sort -rk 1 | cut -d " " -f 8
+tail -n +2 nasa.data | cut -f 1 | uniq -c | sort -rk 1 | head -n 11| cut -d " " -f 8
