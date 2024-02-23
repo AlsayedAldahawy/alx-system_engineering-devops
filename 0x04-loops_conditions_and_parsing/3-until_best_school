@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#Bash script that displays Best School
+
+i=0
+until [[ $i -eq 10 ]]
+do
+    echo "Best School"
+    i=$(( i + 1))
+done
