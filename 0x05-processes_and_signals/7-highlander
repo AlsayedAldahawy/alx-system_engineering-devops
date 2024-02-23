@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Bash script that displays:
+cleanup()
+{
+	echo "I am invincible!!!"
+}
+trap cleanup SIGTERM
+while true;
+do
+	echo "To infinity and beyone"
+	sleep 2
+done
