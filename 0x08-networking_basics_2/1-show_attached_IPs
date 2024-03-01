@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#displays all active IPv4 IPs on the machine it’s executed on.
+
+ip_addr=$(ifconfig | awk '/inet /{print $2}' | cut -d':' -f2)
+echo "$ip_addr"

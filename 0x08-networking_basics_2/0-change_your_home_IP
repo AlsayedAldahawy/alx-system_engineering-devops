@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#resolving Ip addresses to locathost
+
+cp /etc/hosts ~/hosts.backup
+
+echo "127.0.0.2 localhost"  >> ~/hosts.backup
+echo "8.8.8.8 facebook.com" >> ~/hosts.backup
+
+cp -f ~/hosts.backup /etc/hosts
