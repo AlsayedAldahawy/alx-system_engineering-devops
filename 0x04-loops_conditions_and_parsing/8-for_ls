@@ -8,6 +8,8 @@
 for file in * ; do
 
     if [ -f "$file" ] && [ ! -d "$file" ] && [[ "$file" != .* ]]
+    # checking if it is a file, not a direectory, does not start with a dot (hidden file)
+    # The double brackets [[ ... ]] are used for pattern matching and additional operators.
     then
         echo "$file" | cut -d "-" -f2-
     fi
