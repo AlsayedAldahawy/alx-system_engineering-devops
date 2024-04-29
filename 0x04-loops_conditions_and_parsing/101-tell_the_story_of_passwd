@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Bash script that displays the content of the file /etc/passwd, using the while loop + IFS.
 
-file=/etc/passwd
+file="/etc/passwd"
 
 while IFS=: read -r username password userid groupid uidinfo home_dir shell
 do
