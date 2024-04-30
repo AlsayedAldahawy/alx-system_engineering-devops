@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+awk '{ count[$1 " " $9]++ } END { for (element in count) print count[element], element}' apache-access.log | sort -k1nr
