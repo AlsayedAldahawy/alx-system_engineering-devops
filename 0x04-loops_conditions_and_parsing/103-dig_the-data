@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Bash script that groups visitors by IP and HTTP status code
 
-awk '{ count[$1 " " $9]++ } END { for (element in count) print count[element], element}' apache-access.log | sort -k1,1nr -k2,2r -k3,3r
-# this code works but it gives checker error because of the lexicographic sorting between the IPs - HTTP status code of the same occurences
+# awk '{ count[$1 " " $9]++ } END { for (element in count) print "   ",count[element], element}' apache-access.log | sort -k1,1nr -k2,2r -k3,3r
+# this code works but it gives checker error because the expected output has the space befor thr lines due to "uniq -c" command
 
-# file="apache-access.log"
+file="apache-access.log"
 
-# awk '{print $1 " " $9}' "$file" | sort | uniq -c | sort -nr
+awk '{print $1 " " $9}' "$file" | sort | uniq -c | sort -nr
