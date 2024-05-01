@@ -10,4 +10,4 @@ for i in $PID; do
     kill "$i"
 done
 
-# this code is modified to Terminate all instances of the program
+# this script is modified to Terminate all instances of the program 4-to_infinity_and_beyond
