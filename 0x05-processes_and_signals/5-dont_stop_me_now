@@ -2,5 +2,12 @@
 # Bash script that stops 4-to_infinity_and_beyond process.
 
 PID=$(pgrep -f 4-to_infinity_and_beyond)
-kill "$PID"
 
+# if more than one process are running, PID will be an array of PIDs
+# + so we need to go through that array and kill each process one by one
+
+for i in $PID; do
+    kill "$i"
+done
+
+# this code is modified to Terminate all instances of the program
