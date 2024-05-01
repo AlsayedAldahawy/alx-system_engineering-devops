@@ -9,8 +9,7 @@
 
 sudo touch /var/run/myscript.pid
 sudo chmod 666 var/run/myscript.pid
-# shellcheck disable=SC2024
-sudo echo "$$" > /var/run/myscript.pid
+echo "$$" | sudo tee /var/run/myscript.pid > /dev/null
 
 trap "echo 'I hate the kill command'; sudo rm /var/run/myscript.pid; exit" SIGTERM
 trap "echo 'Y U no love me?!'" SIGINT
