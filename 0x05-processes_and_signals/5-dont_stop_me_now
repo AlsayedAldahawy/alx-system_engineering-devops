@@ -1,13 +1,26 @@
 #!/usr/bin/env bash
-# Bash script that stops 4-to_infinity_and_beyond process.
+# Bash script to stop the "4-to_infinity_and_beyond" process.
 
-PID=$(pgrep -f 4-to_infinity_and_beyond)
+# This script efficiently terminates all instances of the program "4-to_infinity_and_beyond"
+# and handles the case when the process is not running.
 
-# if more than one process are running, PID will be an array of PIDs
-# + so we need to go through that array and kill each process one by one
+# Find the PID of the "4-to_infinity_and_beyond" process
+PID=$(pgrep -f "4-to_infinity_and_beyond")
+
+# Check the exit code of pgrep
+EXT_CODE=$?
+
+if [ "$EXT_CODE" -ne 0 ]; then
+    echo "No running '4-to_infinity_and_beyond' process found."
+    exit "$EXT_CODE"
+fi
+
+# If more than one process is running, the pgrep will return multiple PIDs
+# In this case, the PID variable will be an array of PIDs, which would cause an error
+# when passing it to the Kill command. Therefore, we iterate through the PID array and
+# kill each process one by one.
 
 for i in $PID; do
     kill "$i"
 done
 
-# this script is modified to Terminate all instances of the program 4-to_infinity_and_beyond
