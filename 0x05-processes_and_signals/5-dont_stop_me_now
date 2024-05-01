@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # Bash script to stop the "4-to_infinity_and_beyond" process.
 
-# This script efficiently terminates all instances of the program "4-to_infinity_and_beyond"
+# This script terminates all instances of the program "4-to_infinity_and_beyond"
 # and handles the case when the process is not running.
 
-# Find the PID of the "4-to_infinity_and_beyond" process
+# Find the PIDs of the "4-to_infinity_and_beyond" process
 PID=$(pgrep -f "4-to_infinity_and_beyond")
 
 # Check the exit code of pgrep
