@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# a manage_my_process Bash script that:
+# - Indefinitely writes I am alive! to the file /tmp/my_process
+# - In between every I am alive! message, the program should pause for 2 seconds
+
+# Create an empty file named "my_process" in the /tmp directory
+sudo touch /tmp/my_process 
+
+# Set permissions on the file to allow read and write for all users
+sudo chmod 666 /tmp/my_process
+
+# Infinite loop: Print "I am alive!" to the file every 2 seconds
+while true; do
+    echo "I am alive!" | sudo tee -a /tmp/my_process > /dev/null
+    # sudo echo "I am alive!" >> /tmp/my_process
+    sleep 2
+done

@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+# manage_my_process Bash Script
+#
+# Description:
+#   This script indefinitely writes "I am alive!" to the file /tmp/my_process.
+#   Between every "I am alive!" message, the program pauses for 2 seconds.
+#
+# Requirements:
+#   - Bash (init) script named 101-manage_my_process that manages manage_my_process.
+#   - Both files (manage_my_process and 101-manage_my_process) need to be pushed to Git.
+#
+# Usage:
+#   - When passing the argument "start":
+#     - Starts manage_my_process.
+#     - Creates a file containing its PID in /var/run/my_process.pid.
+#     - Displays "manage_my_process started".
+#   - When passing the argument "stop":
+#     - Stops manage_my_process.
+#     - Deletes the file /var/run/my_process.pid.
+#     - Displays "manage_my_process stopped".
+#   - When passing the argument "restart":
+#     - Stops manage_my_process.
+#     - Deletes the file /var/run/my_process.pid.
+#     - Starts manage_my_process.
+#     - Creates a file containing its PID in /var/run/my_process.pid.
+#     - Displays "manage_my_process restarted".
+#   - If any other argument or no argument is passed:
+#     - Displays usage instructions: "Usage: manage_my_process {start|stop|restart}"
+
+ARG_ERR=1
+
+# Function to start manage_my_process
+startMyProcess()
+{
+    ./manage_my_process &  # Run manage_my_process in the background
+    sudo touch /var/run/my_process.pid  # Create a PID file
+    sudo chmod 666 /var/run/my_process.pid  # Set permissions on the PID file
+    echo "$!" | sudo -S password.txt tee /var/run/my_process.pid > /dev/null # Write the process ID to the PID file
+}
+
+# Function to stop manage_my_process
+stopMyProcess()
+{
+    kill "$(cat /var/run/my_process.pid)"  # Kill the process using its PID
+    sudo rm /var/run/my_process.pid  # Remove the PID file
+}
+
+# Check if exactly one argument is provided
+if [ $# -ne 1 ]
+then
+    echo "Usage: manage_my_process {start|stop|restart}"
+    exit $ARG_ERR
+fi
+
+# Handle the provided argument
+case $1 in
+start)
+        startMyProcess
+        echo "manage_my_process started"
+        ;;
+
+stop)
+        stopMyProcess
+        echo "manage_my_process stopped"
+        ;;
+
+restart)
+        stopMyProcess
+        startMyProcess
+        echo "manage_my_process restarted"
+        ;;
+
+*)
+    echo "Usage: manage_my_process {start|stop|restart}"
+    exit $ARG_ERR
+    ;;
+esac
