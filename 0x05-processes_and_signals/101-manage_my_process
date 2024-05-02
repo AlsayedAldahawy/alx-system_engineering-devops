@@ -28,6 +28,7 @@
 #     - Displays usage instructions: "Usage: manage_my_process {start|stop|restart}"
 
 ARGS_ERR=1
+ARGS_MSG="Usage: manage_my_process {start|stop|restart}"
 
 # Function to start manage_my_process
 startMyProcess()
@@ -48,7 +49,7 @@ stopMyProcess()
 # Check if exactly one argument is provided
 if [ $# -ne 1 ]
 then
-    echo "Usage: manage_my_process {start|stop|restart}"
+    echo "$ARGS_MSG"
     exit $ARGS_ERR
 fi
 
@@ -71,7 +72,7 @@ restart)
         ;;
 
 *)
-    echo "Usage: manage_my_process {start|stop|restart}"
+    echo "$ARGS_MSG"
     exit $ARGS_ERR
     ;;
 esac
