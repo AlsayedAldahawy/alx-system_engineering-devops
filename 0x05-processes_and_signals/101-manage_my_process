@@ -44,10 +44,10 @@ stopMyProcess()
 }
 
 # Check if exactly one argument is provided
-if [ $# -ne 1 ]
-then
-    echo "Usage: manage_my_process {start|stop|restart}"
-fi
+# if [ $# -ne 1 ]
+# then
+#     echo "Usage: manage_my_process {start|stop|restart}"
+# fi
 
 # Handle the provided argument
 case $1 in
