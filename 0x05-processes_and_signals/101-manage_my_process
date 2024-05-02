@@ -33,7 +33,7 @@ startMyProcess()
     ./manage_my_process &  # Run manage_my_process in the background
     sudo touch /var/run/my_process.pid  # Create a PID file
     sudo chmod 666 /var/run/my_process.pid  # Set permissions on the PID file
-    echo "$!" | sudo -S password.txt tee /var/run/my_process.pid > /dev/null # Write the process ID to the PID file
+    echo "$!" | sudo tee /var/run/my_process.pid > /dev/null # Write the process ID to the PID file
 }
 
 # Function to stop manage_my_process
