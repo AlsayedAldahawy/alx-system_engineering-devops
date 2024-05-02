@@ -27,8 +27,6 @@
 #   - If any other argument or no argument is passed:
 #     - Displays usage instructions: "Usage: manage_my_process {start|stop|restart}"
 
-ARG_ERR=1
-
 # Function to start manage_my_process
 startMyProcess()
 {
@@ -49,7 +47,6 @@ stopMyProcess()
 if [ $# -ne 1 ]
 then
     echo "Usage: manage_my_process {start|stop|restart}"
-    exit $ARG_ERR
 fi
 
 # Handle the provided argument
@@ -72,6 +69,5 @@ restart)
 
 *)
     echo "Usage: manage_my_process {start|stop|restart}"
-    exit $ARG_ERR
     ;;
 esac
