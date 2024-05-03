@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#resolving Ip addresses to locathost
+
+for i in $(hostname -I)
+do
+    echo "$i"
+done
