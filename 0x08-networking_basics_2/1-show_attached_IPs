@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#resolving Ip addresses to locathost
+# Bash script that displays all active IPv4 IPs on the machine it’s executed on.
 
 for i in $(hostname -I)
 do
