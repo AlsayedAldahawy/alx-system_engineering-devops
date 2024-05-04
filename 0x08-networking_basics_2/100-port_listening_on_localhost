@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Listen on port 98
 # Start netcat listener in the background
 
