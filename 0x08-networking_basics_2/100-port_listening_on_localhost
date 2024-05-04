@@ -1,0 +1,5 @@
+#!/bin/bash
+# Listen on port 98
+# Start netcat listener in the background
+
+nc -l localhost 98
