@@ -1,14 +1,8 @@
 #!/usr/bin/env bash
 
-echo -e "Updating\n"
-
 sudo apt-get update
 
-echo -e "Installing UFW\n"
-
 sudo apt-get install -y ufw
-
-echo -e "configuring UFW...\n"
 
 # Allow Outgoing and Deny Incoming
 sudo ufw default deny incoming
@@ -21,5 +15,3 @@ sudo ufw allow 443
 
 # Enable Fire Wall
 sudo ufw enable
-
-echo -e "Process Completed.\n"
