@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Bash script that groups visitors by IP and HTTP status code
 
-# awk '{ count[$1 " " $9]++ } END { for (element in count) print "   ",count[element], element}' apache-access.log | sort -k1,1nr -k2,2r -k3,3r
+# awk '{ count[$1 " " $9]++ } END { for (element in count) print count[element], element}' apache-access.log | sort -k1,1nr -k2,2r -k3,3r
 # this code works but it gives checker error because the expected output has the space befor thr lines due to "uniq -c" command
 
 file="apache-access.log"
