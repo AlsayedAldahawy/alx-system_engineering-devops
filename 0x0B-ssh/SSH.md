@@ -28,3 +28,25 @@
 ### Changing the Passphrase
 
 - To change the passphrase for an existing key:
+    - `ssh-keygen -p`
+
+
+## SSH Key Fingerprint
+
+- Each SSH key pair has a unique cryptographic "fingerprint."
+- The fingerprint helps uniquely identify the keys.
+- It's easier to compare randomart images visually than long hexadecimal strings.
+- Your client checks if the server's fingerprint matches the one you previously saved.
+
+### Viewing the Fingerprint
+
+- To view the fingerprint of an SSH key:
+- Ask for the file location of the key:
+    - `ssh-keygen -l`
+
+- Show the fingerprint directly (if the file location is known):
+    - `ssh-keygen -l -f ~/.ssh/id_rsa.pub`
+
+- Additionally, use `-lv` to display the key's randomart image.
+    - `ssh-keygen -lv`
+
