@@ -1,3 +1,5 @@
+# creates a file in /tmp
+
 file{/tmp/school,
     ensure => true,
     mode => 0744,
