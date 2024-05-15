@@ -54,7 +54,10 @@
 
 
 ### Copying your Public SSH Key to a Server with SSH-Copy-ID
-	- ssh-copy-id username@remote_host : This will prompt you for the user account’s password on the remote system
+
+- ` ssh-copy-id username@remote_host `
+
+This will prompt you for the user account’s password on the remote system
 
 ### Copying your Public SSH Key to a Server Without SSH-Copy-ID
 	- cat ~/.ssh/id_rsa.pub | ssh username@remote_host "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
@@ -66,6 +69,7 @@
 
 	- ssh remote_host : if username on your local machine is the same as that on the remote server
 	- ssh username@remote_host
+    - ssh -i path/to/key_file username@remote_host : Connect to a remote server with a specific identity (private key):
 
 ### Running a Single Command on a Remote Server
 	- ssh username@remote_host command_to_run
