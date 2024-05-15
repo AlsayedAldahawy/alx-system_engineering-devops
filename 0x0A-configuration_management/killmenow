@@ -1,0 +1,5 @@
+#!/bin/bash
+# shellcheck disable=SC2160
+while [[ true ]]; do
+    sleep 2
+done
