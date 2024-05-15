@@ -4,3 +4,13 @@ exec { 'kill_killmenow':
   command => 'pkill -f killmenow',
   path    => ['/usr/bin', '/bin'],
 }
+# The path parameter specifies where to find the pkill command (common locations like /usr/bin and /bin)
+
+
+# Another Solution
+#
+# exec { 'kill_killmenow':
+#   command  => 'pkill killmenow',
+#   provider => 'shell',
+# }
+# The provider was set to 'shell', which means the command is executed in a shell environment.
