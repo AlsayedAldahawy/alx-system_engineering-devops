@@ -4,6 +4,6 @@
 
 file { 'shh_config':
   ensure  => file,
-  path    => '/home/alsayed/.ssh/ssh_config',
+  path    => '/etc/ssh/ssh_config',
   content => " Host *\n   PasswordAuthentication no\n   IdentifyFile ~/.ssh/school\n",
 }
