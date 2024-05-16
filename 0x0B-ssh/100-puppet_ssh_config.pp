@@ -8,7 +8,7 @@ file { '/etc/ssh/ssh_config':
   ensure => present,
 }
 
--> file_line { 'shh_config':
+file_line { 'shh_config':
   path => '/etc/ssh/ssh_config',
   line => "   PasswordAuthentication no\n   IdentifyFile ~/.ssh/school\n",
 }
