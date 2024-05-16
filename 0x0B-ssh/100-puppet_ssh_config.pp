@@ -2,8 +2,13 @@
 # must be configured to use the private key ~/.ssh/school
 # must be configured to refuse to authenticate using a password
 
-file { 'shh_config':
-  ensure  => file,
-  path    => '/etc/ssh/ssh_config',
-  content => " Host *\n   PasswordAuthentication no\n   IdentifyFile ~/.ssh/school\n",
+include stdlib
+
+file { '/etc/ssh/ssh_config':
+  ensure => present,
+}
+
+-> file_line { 'shh_config':
+  path => '/etc/ssh/ssh_config',
+  line => "   PasswordAuthentication no\n   IdentifyFile ~/.ssh/school\n",
 }
