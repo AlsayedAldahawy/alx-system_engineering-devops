@@ -168,6 +168,7 @@ Host testhost
     HostName your_domain
     Port 4444
     User demo
+    IdentityFile /path/to/your/private_key
 ```
 
 You could then connect to your_domain on port 4444 using the username demo by simply typing:
