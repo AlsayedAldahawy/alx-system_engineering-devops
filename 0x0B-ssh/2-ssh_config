@@ -1,3 +1,7 @@
+# ssh config file to 
+# configured to refuse to authenticate using a password
+# configured to use the private key ~/.ssh/school
+
 Host *
     PasswordAuthentication no
     IdentifyFile ~/.ssh/school
