@@ -10,6 +10,6 @@ file { '/etc/ssh/ssh_config':
 
 -> file_line { 'shh_config':
   path    => '/etc/ssh/ssh_config',
-  line    => "   PasswordAuthentication no\n   IdentifyFile ~/.ssh/school\n",
+  line    => "   PasswordAuthentication no\n   IdentityFile ~/.ssh/school\n",
   replace => true,
 }
