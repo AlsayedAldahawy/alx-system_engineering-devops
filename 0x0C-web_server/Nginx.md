@@ -116,3 +116,43 @@ Certainly! Here's a summarized version of the remaining steps for setting up Ngi
      ```
      sudo systemctl restart nginx
      ```
+
+### Step 5: Modifying Your Local Hosts File for Testing (Optional)
+
+- If you've been using placeholder domain names instead of actual domains you own, you can modify your local computer's configuration to test your Nginx server block setup.
+- This won't allow other visitors to view your site correctly, but it lets you test each site independently.
+- By intercepting requests that would normally go to DNS, you can set the IP addresses your local computer should use when requesting domain names.
+- Ensure you're operating on your local computer (not a remote server) and have the necessary permissions to edit system files.
+
+#### On Mac or Linux:
+
+1. Open the hosts file:
+   ```
+   sudo nano /etc/hosts
+   ```
+
+2. Add lines like this (assuming your server's public IP address is 203.0.113.5):
+   ```
+   127.0.0.1   localhost
+   ...
+   203.0.113.5 example.com www.example.com
+   203.0.113.5 test.com www.test.com
+   ```
+
+3. Save and close the file.
+
+#### On Windows:
+
+- Follow instructions for altering the hosts file specific to Windows.
+
+### Step 6: Testing Your Results
+
+1. Visit the domains in your web browser:
+   - [http://example.com](http://example.com): You should see a page similar to the "Nginx first server block" example.
+   - [http://test.com](http://test.com): You should see a slightly different site (the "Nginx second server block").
+
+2. If both sites work, you've successfully configured two independent server blocks with Nginx.
+
+3. If you adjusted your hosts file for testing, consider removing the added lines.
+
+4. For public-facing access, consider purchasing domain names for your sites.
