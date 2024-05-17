@@ -2,8 +2,8 @@
 # Script that configures a new ubuntu machine to install Nginx and redirection
 
 # Installing Nginx on the ubuntu server
-sudo apt update -y
-sudo apt install nginx -y
+sudo apt-get update -y
+sudo apt-get install nginx -y
 
 # Allowing the Ngnix on the Fire-wall
 sudo ufw allow 'Nginx HTTP'
