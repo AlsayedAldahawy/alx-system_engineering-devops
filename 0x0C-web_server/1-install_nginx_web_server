@@ -5,14 +5,16 @@
 sudo apt update -y
 sudo apt install nginx -y
 
-# configure Nginx default page
-sudo touch index.html
-echo "Hello World!" | sudo tee index.html
+# modefing the ownership and permissions of /var/www/ directory
 sudo chown -R "$USER:$USER" /var/www/
 sudo chmod -R 755 /var/www
 
-mv index.html /var/www/
+# configure Nginx default page
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
 
+# Allowing Nginx on the fire-wall
 ufw allow 'Nginx HTTP'
-service nginx restart
+
+# restarting nginx
+sudo service nginx restart
 
