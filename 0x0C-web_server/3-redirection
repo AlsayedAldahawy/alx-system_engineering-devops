@@ -9,7 +9,7 @@ sudo apt-get install nginx -y
 sudo ufw allow 'Nginx HTTP'
 
 # Modifying the permissions of Ngnix document root directories to work on it without sudo
-sudo chown "$USER:$USER" /var/www/html/
+sudo chown -R "$USER:$USER" /var/www/html/
 sudo chmod -R 755 /var/www/
 
 # Writing the required text in the task into the index file
@@ -20,7 +20,3 @@ sudo sed -i "/listen 80 default_server/a rewrite ^/redirect_me https://www.youtu
 
 # Restarting Nginx and the Fire-wall so our modifications gey applied
 service nginx restart
-service ufw restart
-
-
-
