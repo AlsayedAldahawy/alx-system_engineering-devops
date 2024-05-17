@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Script that configures a new ubuntu machine to install Nginx and redirection
+# Redirection
 
 sudo apt-get update
 sudo apt-get -y install nginx
