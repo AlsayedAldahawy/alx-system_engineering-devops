@@ -16,8 +16,7 @@ sudo chmod 755 /var/www/html/index.nginx-debian.html
 echo "Hello World!" > /var/www/html/index.nginx-debian.html
 
 # Using sed command to insert redirection action for /redirect_me path
-sed -i "/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-enabled/default
-
+sed -i "/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default
 # Restarting Nginx and the Fire-wall so our modifications gey applied
 service nginx restart
 service ufw restart
