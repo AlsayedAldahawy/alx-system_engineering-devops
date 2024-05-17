@@ -14,7 +14,7 @@ exec { 'apt update':
 }
 
 # Allow Nginx through the firewall
-exec { '100 allow Nginx HTTP':
+exec { 'allow Nginx HTTP':
   provider => shell,
   command  => "sudo ufw allow 'Nginx HTTP';",
 }
