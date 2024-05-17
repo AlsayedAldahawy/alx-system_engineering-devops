@@ -2,14 +2,14 @@
 
 
 # Install Nginx package
-
 exec { 'apt update':
-  command => 'sudo apt-get update -y',
+  command  => 'sudo apt-get update -y',
+  provider => shell,
 }
 
 -> package { 'nginx':
   ensure          => installed,
-  provider        => apt-get,
+  provider        => apt,
   install_options => ['-y'],
 }
 
@@ -44,7 +44,8 @@ file { '/etc/nginx/sites-enabled/default':
     server {
         listen 80 default_server;
         server_name _;
-
+        root /var/www/html;
+        index index.html index.htm index.nginx-debian.html;
         location = /redirect_me {
             rewrite ^ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
         }
