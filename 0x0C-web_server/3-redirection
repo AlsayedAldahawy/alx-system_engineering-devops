@@ -1,23 +1,22 @@
 #!/usr/bin/env bash
-# Configure your Nginx server so that /redirect_me is redirecting to another page.
+# Script that configures a new ubuntu machine to install Nginx and redirection
 
+# Installing Nginx on the ubuntu server
 sudo apt-get update -y
-sudo apt-get install -y nginx
+sudo apt-get install nginx -y
 
-echo "Hello World" | sudo tee /var/www/html/index.html
+# Allowing the Ngnix on the Fire-wall
+sudo ufw allow 'Nginx HTTP'
 
-echo "server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
+# Modifying the permissions of Ngnix document root directories to work on it without sudo
+sudo chown -R "$USER:$USER" /var/www/html/
+sudo chmod -R 755 /var/www/
 
-    location /redirect_me {
-        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-    }
+# Writing the required text in the task into the index file
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
 
-    root /var/www/html;
-    index index.html index.htm index.nginx-debian.html;
-}" | sudo tee /etc/nginx/sites-available/default
+# Using sed command to insert redirection action for /redirect_me path
+sudo sed -i "/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-enabled/default
 
+# Restarting Nginx and the Fire-wall so our modifications gey applied
 sudo service nginx restart
-
-sudo nginx -t
