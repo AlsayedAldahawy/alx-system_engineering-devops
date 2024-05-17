@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# Script that configures a new ubuntu machine to install Nginx and redirection
+
+# Installing Nginx on the ubuntu server
+sudo apt update -y
+sudo apt install nginx -y
+
+# Modifying the permissions of Ngnix document root directories to work on it without sudo
+sudo chmod "$USER:$USER" /var/www
+sudo chmod 755 /var/www/html/*
+
+# Writing the required text in the task into the index file
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
+
+# Using sed command to insert redirection action for /redirect_me path
+sed -i "/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-enabled/default
+
+# Allowing the Ngnix on the Fire-wall
+ufw allow 'Nginx HTTP'
+
+# Restarting Nginx and the Fire-wall so our modifications gey applied
+service nginx restart
+service ufw restart
+
+
+
