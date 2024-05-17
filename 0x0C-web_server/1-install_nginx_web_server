@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Basch script to install and configure Nginx on server
+
+# installing Nginx
+sudo apt update -y
+sudo apt install nginx -y
+
+# configure Nginx default page
+sudo touch index.html
+echo "Hello World!" | sudo tee index.html
+sudo chown -R "$USER:$USER" /var/www/
+sudo chmod -R 755 /var/www
+
+mv index.html /var/www/
+
