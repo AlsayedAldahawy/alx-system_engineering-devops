@@ -13,3 +13,6 @@ sudo chmod -R 755 /var/www
 
 mv index.html /var/www/
 
+ufw allow 'Nginx HTTP'
+service nginx restart
+
