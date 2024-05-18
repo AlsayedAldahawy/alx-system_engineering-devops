@@ -22,14 +22,12 @@ exec { 'allow Nginx HTTP':
 # Set permissions for Nginx document root
 file { '/var/www/html':
   ensure => directory,
-  owner  => 'ubuntu',
-  group  => 'ubuntu',
-  mode   => '0755',
+  mode   => '0777',
 }
 
 exec { '/var/www':
   provider => shell,
-  command  => 'sudo chmod -R 755 /var/www',
+  command  => 'sudo chmod -R 777 /var/www',
 }
 
 # Create custom index and 404 pages
