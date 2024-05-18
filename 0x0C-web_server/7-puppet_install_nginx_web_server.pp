@@ -45,9 +45,10 @@ file { '/var/www/html/404.html':
 
 # Configure Nginx server block
 file { '/etc/nginx/sites-enabled/default':
-  content => "
+  content => '
     server {
         listen 80 default_server;
+        listen [::]:80 default_server;
         server_name _;
         root /var/www/html;
         index index.html index.htm index.nginx-debian.html;
@@ -55,9 +56,11 @@ file { '/etc/nginx/sites-enabled/default':
 
         error_page 404 /404.html;
 
-        # Other server block configuration...
+        location / {
+            try_files $uri $uri/ =404;
+        }
     }
-  ",
+  ',
   notify  => Service['nginx'],
 }
 
