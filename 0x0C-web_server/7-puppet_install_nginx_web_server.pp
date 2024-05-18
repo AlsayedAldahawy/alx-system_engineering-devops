@@ -27,6 +27,11 @@ file { '/var/www/html':
   mode   => '0755',
 }
 
+exec { '/var/www':
+  provider => shell,
+  command  => 'sudo chmod -R 755 /var/www',
+}
+
 # Create custom index and 404 pages
 file { '/var/www/html/index.nginx-debian.html':
   ensure  => file,
@@ -46,9 +51,7 @@ file { '/etc/nginx/sites-enabled/default':
         server_name _;
         root /var/www/html;
         index index.html index.htm index.nginx-debian.html;
-        location = /redirect_me {
-            rewrite ^ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
-        }
+        rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
 
         error_page 404 /404.html;
 
