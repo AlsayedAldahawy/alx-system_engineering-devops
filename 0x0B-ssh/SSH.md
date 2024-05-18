@@ -38,7 +38,10 @@
 - It's easier to compare randomart images visually than long hexadecimal strings.
 - Your client checks if the server's fingerprint matches the one you previously saved.
 
-### Viewing the Fingerprint
+### Viewing the Public key and Fingerprint
+
+- To view public key
+    - `ssh-keygen -y -f ~/.ssh/id_rsa`
 
 - To view the fingerprint of an SSH key:
 - Ask for the file location of the key:
@@ -219,5 +222,5 @@ Host *
 Host testhost
     HostName your_domain
     StrictHostKeyChecking ask
-    UserKnownHostsFile /home/demo/.ssh/known_hosts
+    UserKnownHostsFile /home/user_directory/.ssh/known_hosts
 ```
