@@ -33,7 +33,7 @@ exec { '/var/www':
 }
 
 # Create custom index and 404 pages
-file { '/var/www/html/index.nginx-debian.html':
+file { '/var/www/html/index.html':
   ensure  => file,
   content => 'Hello World!',
 }
