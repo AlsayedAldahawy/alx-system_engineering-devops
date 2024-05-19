@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# run apache on designated container
+# Bash script to run Apache service on Ubuntu 14.04.5 LTS machine.
 
-echo "ServerName localhost" >> /etc/apache2.conf
 service apache2 start
