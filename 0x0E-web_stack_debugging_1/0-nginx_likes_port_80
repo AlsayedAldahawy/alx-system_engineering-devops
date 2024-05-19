@@ -5,4 +5,4 @@
 apt-get update -y
 apt-get install nginx -y
 apt-get install curl -y
-service nginx start
+service nginx restart
