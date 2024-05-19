@@ -2,5 +2,5 @@
 # Bash script to configure Nginx on docker ubuntu container
 # Nginx listening on port 80 (Default port)
 
-
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 sudo service nginx restart
