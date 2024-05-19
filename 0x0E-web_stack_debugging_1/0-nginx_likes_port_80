@@ -2,7 +2,7 @@
 # Bash script to install Nginx on docker ubuntu container
 # Nginx listening on port 80 (Default port)
 
-apt-get update -y
-apt-get install nginx -y
-apt-get install curl -y
-service nginx restart
+sudo apt-get update -y
+sudo apt-get install nginx -y
+sudo apt-get install curl -y
+sudo service nginx restart
