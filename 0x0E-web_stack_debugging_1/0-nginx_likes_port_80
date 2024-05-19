@@ -2,21 +2,5 @@
 # Bash script to configure Nginx on docker ubuntu container
 # Nginx listening on port 80 (Default port)
 
-# shellcheck disable=SC2016
-confgs='server {
-        listen 80 default_server;
-        listen [::]:80 default_server;
-        server_name _;
-        root /var/www/html;
-        index index.html index.htm index.nginx-debian.html;
-        rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
-
-        error_page 404 /404.html;
-
-        location / {
-            try_files $uri $uri/ =404;
-        }
-    }'
-
-echo "$confgs" > /etc/nginx/sites-enebled/default
+cp -r /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 sudo service nginx restart
