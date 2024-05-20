@@ -2,9 +2,10 @@
 # Bash script to Install and configure HAproxy on your lb-01 server.
 
 # Installing HAProxy
-sudo apt-get install --no-install-recommends software-properties-common
-sudo add-apt-repository ppa:vbernat/haproxy-2.8
-sudo apt-get install haproxy=2.8.\*
+sudo apt-get update -y
+sudo apt-get install --no-install-recommends software-properties-common -y
+sudo add-apt-repository ppa:vbernat/haproxy-2.8 -y
+sudo apt-get install haproxy=2.8.\* -y
 
 # Configure the HAProxy
 
