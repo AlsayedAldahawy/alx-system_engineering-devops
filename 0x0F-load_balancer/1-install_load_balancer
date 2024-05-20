@@ -7,9 +7,10 @@
 # apt-get -y update
 # apt-get install -y haproxy=1.8.\*
 
-sudo apt-get update -y
+
 sudo apt-get install --no-install-recommends software-properties-common -y
 sudo add-apt-repository ppa:vbernat/haproxy-2.8 -y
+sudo apt-get update -y
 sudo apt-get install haproxy=2.8.\* -y
 
 # Configure the HAProxy
