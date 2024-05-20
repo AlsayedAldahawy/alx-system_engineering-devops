@@ -20,6 +20,10 @@
      sudo mkdir -p /var/www/test.com/html
      ```
    - Reassign ownership of the web directories to your normal user account to allow writing without `sudo`.
+     ```
+     sudo chown -R $USER:$USER /var/www/example.com/html
+     sudo chown -R $USER:$USER /var/www/test.com/html
+     ```
    - Ensure correct permissions (e.g., `sudo chmod -R 755 /var/www`).
 
 ### Step 2 — Creating Sample Pages for Each Site
