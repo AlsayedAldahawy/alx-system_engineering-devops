@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Access the load balancer server
+
+ssh ubuntu@100.26.219.234
+
