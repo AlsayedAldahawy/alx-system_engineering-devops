@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Script to run the 'whoami' command under a specific user passed as an argument.
+
+# Usage: ./run_as_user.sh <username>
+# Example: ./run_as_user.sh alsayed
+
+sudo -u "$1" whoami
