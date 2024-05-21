@@ -47,5 +47,6 @@ frontend aldahawy-frontend-https
 
 backend aldahawy-backend
         balance roundrobin
+        redirect scheme https if !{ ssl_fc }
         server 505347-web-01 100.26.231.127:80 check
         server 505347-web-02 54.237.53.225:80 check

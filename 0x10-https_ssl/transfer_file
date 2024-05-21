@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# File Transfer Script
+
+# Description:
+# This script transfers a file from the local client to a remote server using SCP (Secure Copy).
+
+# Usage:
+# ./transfer_file <file_path> <IP> [username]
+# Example: ./transfer_file /path/to/myfile.txt web1 myuser
+
+# Parameters:
+# - <file_path>: The local path to the file you want to transfer.
+# - <IP>: The target server's IP address or hostname. You can use predefined aliases (web1, web2, lb) or provide a custom IP.
+# - [username]: (Optional) The username for SSH authentication on the remote server. Default is "ubuntu".
+
+# Predefined Aliases:
+# - "web1": 100.26.231.127
+# - "web2": 54.237.53.225
+# - "lb": 100.26.219.234
+
+# Note:
+# - Make sure you have SSH keys set up for passwordless authentication.
+# - The transferred file will be placed in the home directory of the remote user (e.g., "ubuntu").
+
+# Example:
+# To transfer "myfile.txt" to the server with IP 100.26.231.127 using a custom username:
+# ./transfer_file /path/to/myfile.txt web1 myuser
+
+if [ $# -lt 2 ]; then
+    echo "Usage: $0 PATH_TO_FILE IP [username]"
+else
+    case "$2" in
+        "web1") ip=100.26.231.127 ;;
+        "web2") ip=54.237.53.225 ;;
+        "lb") ip=100.26.219.234 ;;
+        *) ip=$2 ;;
+    esac
+
+    if [ $# -ge 3 ]; then
+        user=$3
+    fi
+
+    scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa "$1" "$user@$ip":~
+fi
