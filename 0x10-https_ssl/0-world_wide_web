@@ -1,25 +1,26 @@
 #!/usr/bin/env bash
-# Bash script to print the output of dig command
-# Usage: ./0-world_wide_web <domain> and/or <subdomain>
+# World Wide Web Domain Information Script
+
+# Usage: ./0-world_wide_web <domain> [subdomain]
+# Example: ./0-world_wide_web example.com www
 # Output: The subdomain [SUB_DOMAIN] is a [RECORD_TYPE] record and points to [DESTINATION]
 
-if [ $# -lt 1 ]; then
-    exit 0
-fi
-
+# Function to retrieve domain information
 domain_info() {
     line=$(dig "$2.$1" | grep -A1 'ANSWER SECTION' | grep "$2")
     echo "$2 $line" | awk '{print "The subdomain", $1, "is a", $5, "record and points to", $6}'
 }
 
+# Main script logic
 if [ $# -eq 1 ]; then
-
+    # If only the domain is provided, check common subdomains
     subdomains=("www" "lb-01" "web-01" "web-02")
-
     for sub in "${subdomains[@]}"; do
         domain_info "$1" "$sub"
     done
-
 elif [ $# -gt 1 ]; then
+    # If both domain and subdomain are provided, retrieve specific information
     domain_info "$1" "$2"
+else
+    echo "Usage: $0 <domain> [subdomain]"
 fi
