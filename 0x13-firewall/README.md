@@ -1,4 +1,3 @@
----
 # UFW (Uncomplicated Firewall) Configuration and Port Forwarding
 
 ## Introduction
