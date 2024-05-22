@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # NGINX Configuration Script
-sudo chown nginx:nginx /etc/nginx/nginx.conf
-sudo chown nginx:nginx /etc/nginx/sites-available/default
-chmod 770 /etc/nginx/nginx.conf
-chmod 770 /etc/nginx/sites-available/default
+sed -i "s/#user www-data/user nginx/" /etc/nginx/nginx.conf
 sed -i "s/80/8080/g" /etc/nginx/sites-available/default
+chown nginx:nginx /etc/nginx/nginx.conf
+chmod 770 /etc/nginx/nginx.conf
 sudo -u nginx service nginx restart
