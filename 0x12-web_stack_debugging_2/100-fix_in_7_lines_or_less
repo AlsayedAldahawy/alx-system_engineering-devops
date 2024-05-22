@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# NGINX Configuration Script
+
+# Purpose: Configure NGINX to listen on port 8080 instead of the default port 80.
+# This script modifies the NGINX configuration files and restarts the service.
+
+# Steps:
+# 1. Replace occurrences of "80" with "8080" in the default NGINX site configuration.
+# 2. Set ownership of the NGINX configuration file to the 'nginx' user.
+# 3. Adjust permissions for the NGINX configuration file.
+# 4. Restart the NGINX service.
+
+# Usage: ./nginx_config.sh
+
+# Note: Make sure to run this script with appropriate privileges (e.g., using sudo).
+
+sed -i "s/80/8080/g" /etc/nginx/sites-available/default
+chown nginx:nginx /etc/nginx/nginx.conf
+chmod 770 /etc/nginx/nginx.conf
+sudo -u nginx service nginx restart
