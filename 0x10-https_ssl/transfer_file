@@ -38,6 +38,8 @@ else
 
     if [ $# -ge 3 ]; then
         user=$3
+    else
+        user="ubuntu"
     fi
 
     scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa "$1" "$user@$ip":~
