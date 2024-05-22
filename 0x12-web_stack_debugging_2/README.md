@@ -1,4 +1,4 @@
-# NGINX Configuration Scripts
+# Debugging NGINX Configuration
 
 This directory contains three bash scripts related to NGINX configuration. Here's a brief overview of each script:
 
