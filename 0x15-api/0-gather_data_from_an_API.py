@@ -20,7 +20,6 @@ if __name__ == "__main__":
     if response.status_code == 200:
         data = response.json()  # Parse JSON response
         EMPLOYEE_NAME = data.get('name')
-        print(data.get('name'))
     else:
         print(f"Error: {response.status_code}")
 
