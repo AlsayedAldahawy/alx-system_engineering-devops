@@ -52,7 +52,7 @@ if __name__ == "__main__":
 
     # Print summary of completed tasks
     print("Employee {} is done with tasks({}/{}):".format(user.get('name'),
-                                                           len(complete),
-                                                           len(todos)))
+                                                          len(complete),
+                                                          len(todos)))
     for title in complete:
         print("\t {}".format(title))
