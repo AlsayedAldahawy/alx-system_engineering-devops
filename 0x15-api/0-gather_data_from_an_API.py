@@ -51,7 +51,7 @@ if __name__ == "__main__":
     complete = [c.get("title") for c in todos if c.get('completed') is True]
 
     # Print summary of completed tasks
-    print("Employee {} is done with tasks ({}/{}):".format(user.get('name'),
+    print("Employee {} is done with tasks({}/{}):".format(user.get('name'),
                                                            len(complete),
                                                            len(todos)))
     for title in complete:
