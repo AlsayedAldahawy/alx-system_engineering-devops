@@ -55,4 +55,4 @@ if __name__ == "__main__":
                                                            len(complete),
                                                            len(todos)))
     for title in complete:
-        print("\t{}".format(title))
+        print("\t {}".format(title))
