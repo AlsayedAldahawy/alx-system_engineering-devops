@@ -1,58 +1,57 @@
 #!/usr/bin/python3
 """
-Employee TODO List Progress Checker
+Script to retrieve and display to-do list information for a given employee ID.
 
-This Python script uses a REST API to retrieve information about
-    a given employee's TODO list progress. It takes an employee ID as
-        a command-line argument and fetches the following data:
-
-1. User Information:
-   - Fetches details about the employee (name, email, etc.) based on
-        the provided user ID.
-
-2. TODO List:
-   - Retrieves the employee's TODO list items from the API.
-   - Filters out completed tasks.
+This script fetches user and to-do list data from the JSONPlaceholder API and prints
+the completed tasks for a specific user.
 
 Usage:
-    python employee_todo_progress.py <employee_id>
+    python script.py <employee_id>
 
-Example:
-    python employee_todo_progress.py 5
-
-Output:
-    Employee John Doe is done with tasks (15/20):
-        Task 1: Complete the report
-        Task 2: Review project proposal
-        ...
-        Task 15: Send meeting agenda
-
-Note:
-- Ensure that the REST API endpoint (https://jsonplaceholder.typicode.com/)
-    is accessible.
-- Replace <employee_id> with the actual employee ID you want to check.
+Arguments:
+    employee_id: The ID of the employee whose to-do list information will be retrieved.
 """
 
+import json
+import urllib.request
+import sys
+
+def fetch_json_data(url):
+    """
+    Fetch JSON data from the provided URL.
+
+    Args:
+        url (str): The URL to fetch data from.
+
+    Returns:
+        dict: The JSON data as a dictionary.
+    """
+    with urllib.request.urlopen(url) as response:
+        return json.loads(response.read().decode('utf-8'))
+
 if __name__ == "__main__":
-    # Import necessary modules
-    import requests
-    from sys import argv
+    # Get the employee ID from command-line arguments
+    if len(sys.argv) != 2:
+        print("Usage: python script.py <employee_id>")
+        sys.exit(1)
+    employee_id = sys.argv[1]
+    
+    # Base URL of the JSONPlaceholder API
+    base_url = 'https://jsonplaceholder.typicode.com/'
 
-    # Base URL for the REST API
-    url = "https://jsonplaceholder.typicode.com/"
+    # Fetch user information
+    user_url = f"{base_url}users/{employee_id}"
+    user = fetch_json_data(user_url)
 
-    # Fetch user information based on the provided user ID
-    user = requests.get(url + "users/" + argv[1]).json()
+    # Fetch to-do list information for the user
+    todos_url = f"{base_url}todos?userId={employee_id}"
+    todos = fetch_json_data(todos_url)
 
-    # Fetch TODO list for the same user
-    todos = requests.get(url + "todos", params={'userId': argv[1]}).json()
+    # Extract titles of completed tasks
+    completed_tasks = [task.get("title") for task in todos if task.get("completed")]
 
-    # Filter completed tasks
-    complete = [c.get("title") for c in todos if c.get('completed') is True]
-
-    # Print summary of completed tasks
-    print("Employee {} is done with tasks({}/{}):".format(user.get('name'),
-                                                          len(complete),
-                                                          len(todos)))
-    for title in complete:
-        print("\t {}".format(title))
+    # Print user and completed tasks information
+    print("Employee {} is done with tasks({}/{}):".format(
+        user.get("name"), len(completed_tasks), len(todos)))
+    for task in completed_tasks:
+        print("\t {}".format(task))
