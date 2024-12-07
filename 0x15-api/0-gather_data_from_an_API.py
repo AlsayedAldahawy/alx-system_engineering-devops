@@ -2,19 +2,21 @@
 """
 Script to retrieve and display to-do list information for a given employee ID.
 
-This script fetches user and to-do list data from the JSONPlaceholder API and prints
-the completed tasks for a specific user.
+This script fetches user and to-do list data from the JSONPlaceholder API
+    and prints the completed tasks for a specific user.
 
 Usage:
     python script.py <employee_id>
 
 Arguments:
-    employee_id: The ID of the employee whose to-do list information will be retrieved.
+    employee_id: The ID of the employee whose to-do list information will be
+        retrieved.
 """
 
 import json
-import urllib.request
 import sys
+import urllib.request
+
 
 def fetch_json_data(url):
     """
@@ -29,13 +31,14 @@ def fetch_json_data(url):
     with urllib.request.urlopen(url) as response:
         return json.loads(response.read().decode('utf-8'))
 
+
 if __name__ == "__main__":
     # Get the employee ID from command-line arguments
     if len(sys.argv) != 2:
         print("Usage: python script.py <employee_id>")
         sys.exit(1)
     employee_id = sys.argv[1]
-    
+
     # Base URL of the JSONPlaceholder API
     base_url = 'https://jsonplaceholder.typicode.com/'
 
@@ -48,7 +51,8 @@ if __name__ == "__main__":
     todos = fetch_json_data(todos_url)
 
     # Extract titles of completed tasks
-    completed_tasks = [task.get("title") for task in todos if task.get("completed")]
+    completed_tasks = [task.get("title")
+                       for task in todos if task.get("completed")]
 
     # Print user and completed tasks information
     print("Employee {} is done with tasks({}/{}):".format(
