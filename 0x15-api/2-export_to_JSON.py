@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 
+'''
+    Python script to export data in the JSON format.
+'''
 import json
 import urllib.request
 import sys
 
-'''
-    Python script to export data in the JSON format.
-'''
 if __name__ == "__main__":
     id = sys.argv[1]
     url = "https://jsonplaceholder.typicode.com/"
